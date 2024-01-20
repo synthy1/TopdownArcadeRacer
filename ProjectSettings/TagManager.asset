@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Jump
+  - Ai
+  - Goal
+  - Checkpoint
+  - SFX
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -12,8 +17,8 @@ TagManager:
   - Jump
   - Water
   - UI
-  - 
-  - 
+  - Players
+  - Bounds
   - 
   - 
   - 

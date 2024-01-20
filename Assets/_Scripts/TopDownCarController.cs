@@ -19,6 +19,7 @@ public class TopDownCarController : MonoBehaviour
     public AnimationCurve jumpCurve;
     public ParticleSystem jumpParticalSystem;
 
+
     //local vairiables
     float accelerationInput = 0f;
     float steeringInput = 0f;
@@ -31,13 +32,13 @@ public class TopDownCarController : MonoBehaviour
 
     //comnponents
     Rigidbody2D carRB2D;
-    Collider2D carCollider;
+    PolygonCollider2D carCollider;
     CarSFXHandler carSFXHandler;
 
     private void Awake()
     {
         carRB2D = GetComponent<Rigidbody2D>();
-        carCollider = GetComponentInChildren<Collider2D>();
+        carCollider = GetComponentInChildren<PolygonCollider2D>();
         carSFXHandler = GetComponent<CarSFXHandler>();
     }
     // Start is called before the first frame update
@@ -50,6 +51,7 @@ public class TopDownCarController : MonoBehaviour
     void Update()
     {
         
+
     }
     private void FixedUpdate()
     {
@@ -210,7 +212,7 @@ public class TopDownCarController : MonoBehaviour
             yield return null;
         }
 
-        if (Physics2D.OverlapCircle(transform.position, 1.5f))
+        if (Physics2D.OverlapCircle(transform.position, 1.5f, 0))
         {
             isJumping = false;
 
@@ -242,6 +244,7 @@ public class TopDownCarController : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Jump"))
@@ -249,6 +252,7 @@ public class TopDownCarController : MonoBehaviour
             JumpData jumpData = collision.GetComponent<JumpData>();
             Jump(jumpData.jumpHeightScale, jumpData.jumpPushScale);
         }
+
     }
 
 }

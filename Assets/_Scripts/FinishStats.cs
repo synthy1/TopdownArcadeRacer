@@ -33,17 +33,19 @@ public class FinishStats : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        statsShown = false;
         playerID = GameObject.FindGameObjectsWithTag("Player");
         aiPlayerID = GameObject.FindGameObjectsWithTag("Ai");
         racers = playerID.Concat(aiPlayerID).ToArray();
         racers = racers.OrderByDescending(x => x.GetComponent<RaceTimes>().carScore).ToArray();
+        statsShown = true;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!statsShown)
+        if (statsShown)
         {
             //first place
             firstPName.text = racers[0].GetComponent<RaceTimes>().ID;
@@ -60,6 +62,9 @@ public class FinishStats : MonoBehaviour
             //second place
             forthPName.text = racers[3].GetComponent<RaceTimes>().ID;
             forthPFT.text = racers[3].GetComponent<RaceTimes>().fastestLap.ToString("0.000");
+
+            statsShown = false;
+
         }
     }
 

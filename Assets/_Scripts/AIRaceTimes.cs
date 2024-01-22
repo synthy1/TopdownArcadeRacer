@@ -30,6 +30,7 @@ public class AIRaceTimes : MonoBehaviour
         carCollider = GetComponentInChildren<PolygonCollider2D>();
         carSFXHandler = GetComponent<CarSFXHandler>();
         carScore = 0;
+        fastestLap = 50.00f;
     }
 
     private void Update()

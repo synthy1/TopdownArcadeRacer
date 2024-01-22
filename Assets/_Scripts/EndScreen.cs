@@ -11,10 +11,10 @@ public class EndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.instance.IsGameOver() == true)
+        if(GameManager.instance.IsGameOver())
         {
             uiEndscreen.SetActive(true);
-            Time.timeScale = 0.2f;
+            Time.timeScale = 0.3f;
         }
         else uiEndscreen.SetActive(false);
 

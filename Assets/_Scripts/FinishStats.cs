@@ -29,16 +29,14 @@ public class FinishStats : MonoBehaviour
     //local variables
     bool statsShown = false;
 
-
-    // Start is called before the first frame update
     void Awake()
     {
         statsShown = false;
         playerID = GameObject.FindGameObjectsWithTag("Player");
         aiPlayerID = GameObject.FindGameObjectsWithTag("Ai");
+        if(playerID != null && aiPlayerID != null)
         racers = playerID.Concat(aiPlayerID).ToArray();
         racers = racers.OrderByDescending(x => x.GetComponent<RaceTimes>().carScore).ToArray();
-        statsShown = true;
 
     }
 

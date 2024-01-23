@@ -37,6 +37,7 @@ public class FinishStats : MonoBehaviour
         if(playerID != null && aiPlayerID != null)
         racers = playerID.Concat(aiPlayerID).ToArray();
         racers = racers.OrderByDescending(x => x.GetComponent<RaceTimes>().carScore).ToArray();
+        statsShown = true;
 
     }
 

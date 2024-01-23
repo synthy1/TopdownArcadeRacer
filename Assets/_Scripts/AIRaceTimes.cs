@@ -64,39 +64,42 @@ public class AIRaceTimes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.CompareTag("Goal"))
+        if (!GameManager.instance.IsGameOver())
         {
-            if (checkPointReached)
+
+            if (collision.CompareTag("Goal"))
             {
-                lapStart = false;
-                RecordCurrentLapTime(lapTime);
-                if (!lapStart)
+                if (checkPointReached)
                 {
-                    if (RecordLapTime < fastestLap)
+                    lapStart = false;
+                    RecordCurrentLapTime(lapTime);
+                    if (!lapStart)
                     {
-                        fastestLap = RecordLapTime;
-                        lapTime = 0;
-                        lapStart = true;
+                        if (RecordLapTime < fastestLap)
+                        {
+                            fastestLap = RecordLapTime;
+                            lapTime = 0;
+                            lapStart = true;
+                        }
+                        else
+                        {
+                            lapTime = 0;
+                            lapStart = true;
+                        }
                     }
-                    else
-                    {
-                        lapTime = 0;
-                        lapStart = true;
-                    }
+                    carScore++;
+                    checkPointReached = false;
                 }
-                carScore++;
-                checkPointReached = false;
+                else if (carScore == 12)
+                {
+                    GameManager.instance.GameOver(true);
+                    carScore = 0;
+                }
             }
-            else if (carScore == 12)
+            else if (collision.CompareTag("Checkpoint"))
             {
-                GameManager.instance.GameOver(true);
-                carScore = 0;
+                checkPointReached = true;
             }
-        }
-        else if (collision.CompareTag("Checkpoint"))
-        {
-            checkPointReached = true;
         }
     }
 }

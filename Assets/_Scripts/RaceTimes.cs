@@ -70,7 +70,7 @@ public class RaceTimes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.instance.IsGameOver())
+        if (!GameManager.instance.IsGameOver())
         {
 
             if (collision.CompareTag("Goal"))

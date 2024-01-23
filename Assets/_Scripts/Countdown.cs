@@ -28,7 +28,7 @@ public class Countdown : MonoBehaviour
     {
         if (!gameStart)
         {
-            timer -= Time.deltaTime;
+            timer -= 0.02f;
             gameObject.SetActive(true);
             countDownImage.text = timer.ToString("0");
             if (timer <= 0)
